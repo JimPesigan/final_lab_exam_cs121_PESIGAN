@@ -1,4 +1,5 @@
 from .dice_game import *
+from .user import*
 game = DiceGame()
 
 class UserManager:
@@ -50,7 +51,7 @@ class UserManager:
 				self.validate_password(password)
 				print("Registration Successful.")
 				self.accounts[username] = User(username, password)
-				game.menu(username)
+				return
 		
 	def login(self):
 		username = input("Enter username, or leave blank to cancel: ")
