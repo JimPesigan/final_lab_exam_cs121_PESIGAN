@@ -32,10 +32,7 @@ class DiceGame:
 	def menu(self, username):
 		self.load_scores()
 		print(f"Welcome, {username}!")
-		print("""\tMenu: 
-		1. Start Game
-		2. Show Top Scores
-		3. Log Out""")
+		print("""Menu:\n1. Start Game\n2. Show Top Scores\n3. Log Out""")
 		choice = int(input("Enter your choice, or leave blank to cancel: "))
 		try:
 			if choice == 1:
@@ -55,7 +52,7 @@ class DiceGame:
 			global wins
 			RoundWin = 0
 			RoundLose = 0
-			while RoundWin < 2 and RoundLose < 2:
+			if RoundWin <= 3 and RoundLose <= 3:
 				RollUser = random.randint(1, 6)
 				RollCPU = random.randint(1, 6)
 				print(f"{username} rolled: {RollUser}")
@@ -70,15 +67,14 @@ class DiceGame:
 				elif RollCPU == RollUser:
 					print("It's a tie!")
 			else:
-				if RoundWin == 2:
+				if RoundWin == 3:
 						print(f"You won this stage {username}!\n")
 						points += 3
 						wins += 1
-						print(f"""{username}
-	Total points: {points}, Stages Won: {wins}""")
+						print(f"""{username} Total points: {points}, Stages Won: {wins}""")
 						print(f"Game over. You won {wins} stage(s) with a total of {points} points.")
 						return True
-				elif RoundLose == 2:
+				elif RoundLose == 3:
 						print(f"You lost this stage {username}.\n")
 						print("Game over. You didn't win any stages.")
 						return False
