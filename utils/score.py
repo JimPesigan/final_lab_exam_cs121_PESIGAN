@@ -1,8 +1,7 @@
-import datetime
-from .user_manager import *
-
+from .user import *
 class Score:
-	def __init__(self, filename='scores.txt'):
-		self.filename = filename
-		self.scores = {}
-		self.wins = {}
+	def __init__(self, username, points, wins, ID):
+		self.username = username
+		self.points = points
+		self.wins = wins
+		self.ID = ID

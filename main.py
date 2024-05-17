@@ -1,23 +1,23 @@
-from utils import user_manager, dice_game, user, score
+from utils import user_manager, dice_game
 
 game = dice_game.DiceGame()
 user = user_manager.UserManager()
 
 def main():
     while True:
-        try:
-            print("""\nWelcome to Dice Roll Game\n1. Register\n2. Login\n3. Exit""")
-    
-            choice = int(input("Enter your choice: "))
+        game.load_scores()
+        user.load_users()
+        print("Welcome to Dice Roll Game\n1. Register\n2. Login\n3. Exit")
+        choice = int(input("Enter your choice: "))
+        if choice == 1:
+            user.register()
+            main()
+        elif choice == 2:
+            user.login()
+        elif choice == 3:
+            return 0
+        else:
+            print("Invalid choice. Please choose a valid option.")
 
-            if choice == 1:
-                user.register()
-                main()
-            if choice == 2:
-                user.login()
-        
-        except ValueError:
-            print("Invalid choice. Please try again.")
-
-
-main()
+if __name__ == "__main__":
+    main()
